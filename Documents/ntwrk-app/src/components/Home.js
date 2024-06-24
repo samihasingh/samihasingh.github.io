@@ -29,7 +29,7 @@ const Home = () => {
           ntwrk.
         </Typography>
         <Typography variant="body1" sx={{ fontStyle: 'italic', mb: 3 }}>
-          ntwrk is your personal networking assistant.
+          ntwrk is your digital rolodex and personal networking assistant.
         </Typography>
         <Box sx={{ mb: 3 }}>
           <Typography variant="body1">stay <strong>connected & maintain relationships</strong></Typography>
