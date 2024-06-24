@@ -98,17 +98,33 @@ const EditContactDialog = ({ open, handleClose, selectedContact, handleSaveConta
           onChange={handleInputChange}
         />
         <TextField
-          margin="dense"
-          name="communicationMethod"
-          label="Preferred Communication Method"
           select
-          fullWidth
-          value={editedContact.communicationMethod || ''}
+          label="Preferred Communication Method"
+          name="preferredCommunicationMethod"
+          value={editedContact.preferredCommunicationMethod || ''}
           onChange={handleInputChange}
+          fullWidth
+          margin="normal"
+          variant="outlined"
           SelectProps={{
             native: true,
           }}
+          InputLabelProps={{
+            style: {
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              shrink: true,
+              width: '100%',
+            },
+          }}
+          InputProps={{
+            style: {
+              paddingRight: '10', // Ensure padding is adjusted to fit the label correctly
+            },
+          }}
         >
+          <option value="na"> </option>
           <option value="Email">Email</option>
           <option value="Text">Text</option>
           <option value="WhatsApp">WhatsApp</option>
@@ -198,6 +214,12 @@ const Dashboard = () => {
     setSearchQuery(event.target.value);
   };
 
+  const handleSignOut = () => {
+    // Add your sign-out logic here (e.g., clear user session, tokens, etc.)
+    localStorage.removeItem('userToken'); // Example
+    navigate('/');
+  };
+
   const filteredContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -215,13 +237,26 @@ const Dashboard = () => {
       <NetworkBackground />
       <AppBar position="fixed" sx={{ backgroundColor: 'black' }}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Typography variant="h6" color="inherit" component={Link} to="/" sx={{ flexGrow: 1 }}>
             ntwrk
           </Typography>
-          <Button color="inherit" component={Link} to="/my-ntwrk">
+          <Button 
+            variant="body1" 
+            color="inherit" 
+            component={Link} 
+            to="/my-ntwrk"
+            sx={{ textTransform: 'none', fontFamily: 'Fira Code, monospace', fontSize: 'inherit' }}
+          >
             my ntwrk
           </Button>
-          <Button color="inherit" component={Link} to="/signout">
+          <Button 
+            variant="body1" 
+            color="inherit" 
+            component={Link} 
+            to="/signout"
+            sx={{ textTransform: 'none', fontFamily: 'Fira Code, monospace', fontSize: 'inherit' }}
+            onClick={handleSignOut}
+          >
             sign out
           </Button>
         </Toolbar>
@@ -276,7 +311,7 @@ const Dashboard = () => {
           </List>
         </Box>
         <Box sx={{ width: '45%' }}>
-          <StreakMilestoneTree streak={streak} />
+          <StreakMilestoneTree streak={30} /> 
         </Box>
       </Box>
       <Fab 
