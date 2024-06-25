@@ -1,0 +1,49 @@
+title: "Samiha Singh"
+description: "Welcome to my personal portfolio. Here you can find highlights from my college career."
+baseurl: "" 
+url: "https://samihasingh.github.io"
+
+# Theme
+remote_theme: artemsheludko/zolan
+
+# Pagination
+paginate: 5
+paginate_path: "/page/:num/"
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll/tagging
+
+# Pages Path
+defaults:
+  - scope:
+      path: '_pages'
+    values:
+      permalink: /:basename:output_ext
+
+include:
+  - _pages
+
+# Tags
+tag_page_dir:         tag
+tag_page_layout:      tag_page
+tag_permalink_style:  pretty
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Social Links
+linkedin: "https://www.linkedin.com/in/samiha-singh"
+
+# Author settings
+author:
+  name: Samiha Singh
+  image: Samiha_Headshot.jpg
+  say-hello: "Hello, I’m <strong>Samiha Singh</strong>"
+  bio: "Fourth-year student @UC Berkeley studying Computer Science and Business (Haas) 🐻. Focused on intersection of entrepreneurship, technology, and social impact :) Lived in 🇮🇳, 🇸🇬, and 🇺🇸"
